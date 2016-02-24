@@ -30,12 +30,18 @@ function weasyprint(input, options, callback) {
   });
   
   var isUrl = /^(https?|file):\/\//.test(input);
+
+  //if format is not specified and we are reading from stdin, than set default pdf format
+  if (!isUrl && !('f' in options) && !('format' in options))
+    args.push('-f', 'pdf')
+
   args.push(isUrl ? quote(input) : '-');    // stdin if HTML given directly
   args.push(output ? quote(output) : '-');  // stdout if no output file
 
   if (process.platform === 'win32') {
     var child = spawn(args[0], args.slice(1));
   } else {
+    console.log('/bin/sh', ['-c', args.join(' ') + ' | cat'])
     // this nasty business prevents piping problems on linux
     var child = spawn('/bin/sh', ['-c', args.join(' ') + ' | cat']);
   }
