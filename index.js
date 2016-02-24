@@ -21,7 +21,7 @@ function weasyprint(input, options, callback) {
   delete options.output;
     
   var keys = Object.keys(options)
-  var args = [wkhtmltopdf.command];
+  var args = [weasyprint.command];
 
   keys.forEach(function(key) {
     var val = options[key];
