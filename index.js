@@ -41,7 +41,6 @@ function weasyprint(input, options, callback) {
   if (process.platform === 'win32') {
     var child = spawn(args[0], args.slice(1));
   } else {
-    console.log('/bin/sh', ['-c', args.join(' ') + ' | cat'])
     // this nasty business prevents piping problems on linux
     var child = spawn('/bin/sh', ['-c', args.join(' ') + ' | cat']);
   }
@@ -50,32 +49,12 @@ function weasyprint(input, options, callback) {
   if (callback)
     child.on('exit', function() { callback(null); });
     
-  // setup error handling
-  var stream = child.stdout;
-  function handleError(err) {
-    child.removeAllListeners('exit');
-    child.kill();
-    
-    // call the callback if there is one
-    if (callback)
-      callback(err);
-      
-    // if not, or there are listeners for errors, emit the error event
-    if (!callback || stream.listeners('error').length > 0)
-      stream.emit('error', err);
-  }
-  
-  child.once('error', handleError);
-  child.stderr.once('data', function(err) {
-    handleError(new Error((err || '').toString().trim()));
-  });
-  
   // write input to stdin if it isn't a url
   if (!isUrl)
     child.stdin.end(input);
   
   // return stdout stream so we can pipe
-  return stream;
+  return child.stdout
 }
 
 weasyprint.command = 'weasyprint';
