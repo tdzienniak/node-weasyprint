@@ -1,3 +1,3 @@
 # node-weasyprint
 
-You need to have [http://weasyprint.org/](WeasyPrint) command line installed on your system.
+You need to have [weasyprint](http://weasyprint.org/) command line tool installed on your system.
