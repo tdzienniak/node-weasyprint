@@ -1,0 +1,22 @@
+{
+  "name": "weasyprint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tdzienniak/node-weasyprint.git"
+  },
+  "author": "Tymoteusz Dzienniak <tymoteusz.dzienniak@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tdzienniak/node-weasyprint/issues"
+  },
+  "homepage": "https://github.com/tdzienniak/node-weasyprint#readme",
+  "dependencies": {
+    "slang": "^0.3.0"
+  }
+}
