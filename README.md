@@ -1,4 +1,4 @@
-# node-weasyprint
+# weasyprint
 *A wrapper for the WeasyPrint HTML to PDF converter*
 
 __NOTE: Some of the code is copy-paste from [devongovett/node-wkhtmltopdf](https://github.com/devongovett/node-wkhtmltopdf).__
