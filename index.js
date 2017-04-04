@@ -32,7 +32,7 @@ function weasyprint(input, options, callback) {
   var isUrl = /^(https?|file):\/\//.test(input);
 
   //if format is not specified and we are reading from stdin, than set default pdf format
-  if (!isUrl && !('f' in options) && !('format' in options))
+  if (!output && !('f' in options) && !('format' in options))
     args.push('-f', 'pdf')
 
   args.push(isUrl ? quote(input) : '-');    // stdin if HTML given directly
